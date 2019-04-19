@@ -70,12 +70,17 @@ app.get("/getData", (req, res) => {
 app.post("/putData", (req, res) => {
   let data = new Data();
 
-  const { id, question1 } = req.body;
+  const { id, question1, question2, question3, question4, question5 } = req.body;
 
   data.question1 = question1;
+  data.question2 = question2;
+  data.question3 = question3;
+  data.question4 = question4;
+  data.question5 = question5;
   data.save(err => {
     if (err) return res.json({ success: false, error: err });
-    return res.json({ success: true });
+    // return res.json({ success: true });
+    return res.json({data})
   });
 });
 
