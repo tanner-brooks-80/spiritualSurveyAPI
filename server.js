@@ -16,31 +16,6 @@ db.once("open", () => console.log("connected to the database"));
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
 
-// const db = knex ({
-//     client: 'pg',
-//     connection: {
-//         host: '0.0.0.0',
-//         user: 'postgres',
-//         password: 'password',
-//         database: 'smart-brain'
-//     }
-// });
-
-
-// const db = knex ({
-//     client: 'pg',
-//     connection: {
-//         connectionString: process.env.DATABASE_URL,
-//         ssl: true,
-//     }
-// });
-
-
-
-
-// db.select('*').from('users').then(data => {
-//     console.log(data);
-// });
 
 
 
@@ -51,30 +26,7 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
 
-// const database = {
-//     users: [
-//         {
-//             id: '1',
-//             question1: 'Apostolic',
-//             question2: 'Pastoral'
-//         },
-//         {
-//             id: '2',
-//             question1: 'Pastoral',
-//             question2: 'Pastoral'
-//         },
-//         {
-//             question1: 'Apostolic',
-//             question2: 'Pastoral',
-//             question3: 'Teacher',
-//             question4: 'Pastoral',
-//             question5: 'Prophetic',
-//             question6: 'Pastoral',
-//             question7: 'Evangelic',
-//             question8: 'Pastoral'
-//         }
-//     ]
-// }
+
 
 const database = {
             question1: 'Apostolic',
@@ -115,34 +67,6 @@ app.get("/getData", (req, res) => {
 
 
 
-
-
-
-// app.post("/putData", (req, res) => {
-//   let data = new Data();
-
-//   const { id, question1 } = req.body;
-
-//   if ((!id && id !== 0) || !question1) {
-//     return res.json({
-//       success: false,
-//       error: "INVALID INPUTS"
-//     });
-//   }
-//   data.question1 = question1;
-//   data.id = id;
-//   data.save(err => {
-//     if (err) return res.json({ success: false, error: err });
-//     return res.json({ success: true });
-//   });
-// });
-
-
-
-
-
-
-
 app.post("/putData", (req, res) => {
   let data = new Data();
 
@@ -156,19 +80,12 @@ app.post("/putData", (req, res) => {
 });
 
 
-
-
-
-
-
-
-
-
 // this is our update method
 // this method overwrites existing data in our database
+
 app.post("/updateData", (req, res) => {
-  const { id, question1 } = req.body;
-  Data.findOneAndUpdate(id, question1, err => {
+  const { id, update } = req.body;
+  Data.findOneAndUpdate(id, update, err => {
     if (err) return res.json({ success: false, error: err });
     return res.json({ success: true });
   });
