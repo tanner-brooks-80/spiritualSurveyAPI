@@ -7,6 +7,7 @@ const logger     = require("morgan");
 const Data       = require('./controllers/data');
 
 mongoose.connect("mongodb+srv://tannerbrooks:WebDevDatabase777@cluster0-pbi57.mongodb.net/test?retryWrites=true",{useNewUrlParser: true});
+// mongoose.connect("mongodb+srv://tannerbrooks:WebDevDatabase777@cluster0-mrbj6.mongodb.net/test?retryWrites=true",{useNewUrlParser: true});
 
 let db = mongoose.connection;
 
@@ -70,13 +71,40 @@ app.get("/getData", (req, res) => {
 app.post("/putData", (req, res) => {
   let data = new Data();
 
-  const { id, question1, question2, question3, question4, question5 } = req.body;
+  const { id, question1, question2, question3, question4, question5, question6, question7, question8, question9, question10,
+  question11, question12, question13, question14, question15, question16, question17, question18, question19, question20,
+    question21, question22, question23, question24, question25, question26, question27, question28, question29, question30 } = req.body;
 
   data.question1 = question1;
   data.question2 = question2;
   data.question3 = question3;
   data.question4 = question4;
   data.question5 = question5;
+  data.question6 = question6;
+  data.question7 = question7;
+  data.question8 = question8;
+  data.question9 = question9;
+  data.question10 = question10;
+  data.question11 = question11;
+  data.question12 = question12;
+  data.question13 = question13;
+  data.question14 = question14;
+  data.question15 = question15;
+  data.question16 = question16;
+  data.question17 = question17;
+  data.question18 = question18;
+  data.question19 = question19;
+  data.question20 = question20;
+  data.question21 = question21;
+  data.question22 = question22;
+  data.question23 = question23;
+  data.question24 = question24;
+  data.question25 = question25;
+  data.question26 = question26;
+  data.question27 = question27;
+  data.question28 = question28;
+  data.question29 = question29;
+  data.question30 = question30;
   data.save(err => {
     if (err) return res.json({ success: false, error: err });
     // return res.json({ success: true });
