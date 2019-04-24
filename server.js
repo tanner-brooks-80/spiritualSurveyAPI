@@ -6,7 +6,10 @@ const mongoose   = require("mongoose");
 const logger     = require("morgan");
 const Data       = require('./controllers/data');
 
-mongoose.connect("mongodb+srv://tannerbrooks:WebDevDatabase777@cluster0-pbi57.mongodb.net/test?retryWrites=true",{useNewUrlParser: true});
+
+var url = process.env.DATABASEURL
+mongoose.connect(url,{useNewUrlParser: true});
+// mongoose.connect("mongodb+srv://tannerbrooks:WebDevDatabase777@cluster0-pbi57.mongodb.net/test?retryWrites=true",{useNewUrlParser: true});
 // mongoose.connect("mongodb+srv://tannerbrooks:WebDevDatabase777@cluster0-mrbj6.mongodb.net/test?retryWrites=true",{useNewUrlParser: true});
 
 let db = mongoose.connection;
